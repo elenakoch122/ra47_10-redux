@@ -1,3 +1,7 @@
+[![Build status](https://ci.appveyor.com/api/projects/status/dspx6j0bui95kfby?svg=true)](https://ci.appveyor.com/project/elenakoch122/ra47-10-redux)
+
+GitHub Pages: https://elenakoch122.github.io/ra47_10-redux
+
 Редактирование
 ===
 

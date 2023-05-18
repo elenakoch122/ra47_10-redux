@@ -1,4 +1,4 @@
-import { ADD_ITEM, DELETE_ITEM, EDIT_ITEM, SET_ID, SET_PRICE, SET_TASK } from "./actionsNames";
+import { ADD_ITEM, CLEAR_FORM, DELETE_ITEM, EDIT_ITEM, SET_ID, SET_IS_EDIT, SET_PRICE, SET_TASK } from "./actionsNames";
 
 export const setTask = (task) => ({
   type: SET_TASK,
@@ -13,6 +13,15 @@ export const setPrice = (price) => ({
 export const setId = (id) => ({
   type: SET_ID,
   payload: id,
+});
+
+export const setIsEdit = (value) => ({
+  type: SET_IS_EDIT,
+  payload: value,
+});
+
+export const clearForm = () => ({
+  type: CLEAR_FORM,
 });
 
 export const addItem = (task, price) => ({

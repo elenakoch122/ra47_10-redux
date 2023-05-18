@@ -1,5 +1,5 @@
 import { useDispatch } from "react-redux";
-import { deleteItem, setId, setPrice, setTask } from "../redux/actions";
+import { clearForm, deleteItem, setId, setIsEdit, setPrice, setTask } from "../redux/actions";
 
 export default function Item({ item }) {
   const dispatch = useDispatch();
@@ -8,10 +8,12 @@ export default function Item({ item }) {
     dispatch(setTask(item.task));
     dispatch(setPrice(item.price));
     dispatch(setId(item.id));
+    dispatch(setIsEdit(true));
   };
 
   const onDeleteClick = (id) => {
     dispatch(deleteItem(id));
+    dispatch(clearForm());
   };
 
   return (

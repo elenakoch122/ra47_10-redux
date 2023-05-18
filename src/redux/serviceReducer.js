@@ -1,9 +1,10 @@
-import { SET_ID, SET_PRICE, SET_TASK } from "./actionsNames";
+import { CLEAR_FORM, SET_ID, SET_IS_EDIT, SET_PRICE, SET_TASK } from "./actionsNames";
 
 const initialState = {
   task: '',
   price: '',
   id: null,
+  isEdit: false,
 };
 
 export const serviceReducer = (state = initialState, action) => {
@@ -25,6 +26,15 @@ export const serviceReducer = (state = initialState, action) => {
         ...state,
         id: action.payload,
       };
+
+    case SET_IS_EDIT:
+      return {
+        ...state,
+        isEdit: action.payload,
+      };
+
+    case CLEAR_FORM:
+      return initialState;
 
     default: return state;
   }

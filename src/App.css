@@ -1,3 +1,11 @@
+.App {
+  padding: 16px;
+}
+
+.form {
+  margin-bottom: 16px;
+}
+
 .item__name, .item__price {
   margin-right: 8px;
 }

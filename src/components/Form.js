@@ -3,7 +3,7 @@ import { addItem, clearForm, editItem, setPrice, setTask } from "../redux/action
 
 export default function Form() {
   const dispatch = useDispatch();
-  const { task, price, id, isEdit } = useSelector((state) => state.service);
+  const { task, price, id, isEdit } = useSelector(state => state.service);
 
   const onSubmitHandler = (e) => {
     e.preventDefault();
@@ -12,9 +12,9 @@ export default function Form() {
   };
 
   return (
-    <form action="" onSubmit={onSubmitHandler}>
+    <form className="form" action="" onSubmit={onSubmitHandler}>
       <input type="text" value={task} required onChange={(e) => { dispatch(setTask(e.target.value)) }}/>
-      <input type="number" min="1" value={price} required onChange={(e) => { dispatch(setPrice(e.target.value)) }} />
+      <input type="number" min="1" value={price} onChange={(e) => { dispatch(setPrice(e.target.value)) }} pattern="[^0-]" required />
       <button type="submit">Save</button>
       {isEdit && <button type="reset" onClick={() => dispatch(clearForm())}>Cancel</button>}
     </form>

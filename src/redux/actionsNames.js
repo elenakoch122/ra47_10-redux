@@ -6,3 +6,5 @@ export const CLEAR_FORM = 'CLEAR_FORM';
 export const ADD_ITEM = 'ADD_ITEM';
 export const EDIT_ITEM = 'EDIT_ITEM';
 export const DELETE_ITEM = 'DELETE_ITEM';
+export const SET_SEARCH_VALUE = 'SET_SEARCH_VALUE';
+export const FILTER_LIST = 'FILTER_LIST';

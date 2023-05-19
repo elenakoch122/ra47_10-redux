@@ -1,4 +1,4 @@
-import { ADD_ITEM, CLEAR_FORM, DELETE_ITEM, EDIT_ITEM, SET_ID, SET_IS_EDIT, SET_PRICE, SET_TASK } from "./actionsNames";
+import { ADD_ITEM, CLEAR_FORM, DELETE_ITEM, EDIT_ITEM, FILTER_LIST, SET_ID, SET_IS_EDIT, SET_PRICE, SET_SEARCH_VALUE, SET_TASK } from "./actionsNames";
 
 export const setTask = (task) => ({
   type: SET_TASK,
@@ -37,4 +37,14 @@ export const editItem = (task, price, id) => ({
 export const deleteItem = (id) => ({
   type: DELETE_ITEM,
   payload: id,
+});
+
+export const setSearchValue = (value) => ({
+  type: SET_SEARCH_VALUE,
+  payload: value,
+});
+
+export const filterList = (value) => ({
+  type: FILTER_LIST,
+  payload: value,
 });

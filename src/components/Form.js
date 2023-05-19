@@ -14,7 +14,7 @@ export default function Form() {
   return (
     <form className="form" action="" onSubmit={onSubmitHandler}>
       <input type="text" value={task} required onChange={(e) => { dispatch(setTask(e.target.value)) }}/>
-      <input type="number" min="1" value={price} onChange={(e) => { dispatch(setPrice(e.target.value)) }} pattern="[^0-]" required />
+      <input type="number" min="1" value={price} onChange={(e) => { dispatch(setPrice(e.target.value)) }} required />
       <button type="submit">Save</button>
       {isEdit && <button type="reset" onClick={() => dispatch(clearForm())}>Cancel</button>}
     </form>

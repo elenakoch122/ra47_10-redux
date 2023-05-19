@@ -47,9 +47,8 @@ export const listReducer = (state = initialState, action) => {
 
     case FILTER_LIST:
       if (!action.payload) return {...state, listFiltered: null};
-
       const regexp = new RegExp(action.payload.toLowerCase().trim());
-      // console.log('regexp----', regexp);
+
       return {
         ...state,
         listFiltered: state.list.filter(i => regexp.test(i.task.toLowerCase())),

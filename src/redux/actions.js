@@ -7,7 +7,7 @@ export const setTask = (task) => ({
 
 export const setPrice = (price) => ({
   type: SET_PRICE,
-  payload: price,
+  payload: +price,
 });
 
 export const setId = (id) => ({

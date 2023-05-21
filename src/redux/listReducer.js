@@ -1,14 +1,15 @@
-import { ADD_ITEM, DELETE_ITEM, EDIT_ITEM, FILTER_LIST } from "./actionsNames";
+import { ADD_ITEM, DELETE_ITEM, EDIT_ITEM, FILTER_LIST, SET_SEARCH_VALUE } from "./actionsNames";
 import { v4 as uuidv4 } from 'uuid';
 
 const initialState = {
   list: [
     { id: uuidv4(), task: 'Купить продукты', price: 1500},
-    { id: uuidv4(), task: 'Купить порошок', price: 1500},
+    { id: uuidv4(), task: 'Купить стиральный порошок', price: 1500},
     { id: uuidv4(), task: 'Купить лимонад', price: 1500},
     { id: uuidv4(), task: 'Забить гвоздь', price: 1500},
   ],
   listFiltered: null,
+  filter: '',
 };
 
 export const listReducer = (state = initialState, action) => {
@@ -23,26 +24,32 @@ export const listReducer = (state = initialState, action) => {
       return {
         ...state,
         list: [ ...state.list, newItem ],
+        listFiltered: state.listFiltered && [...state.listFiltered, newItem ],
       };
 
     case EDIT_ITEM:
-      const editedItem = Object.assign({}, state.list.find(i => i.id === action.payload.id));
+      const editedItem = state.list.find(i => i.id === action.payload.id);
       editedItem.task = action.payload.task.trim();
       editedItem.price = action.payload.price;
 
-      const idx = state.list.findIndex(i => i.id === action.payload.id);
-      const newList = Object.assign([], state.list);
-      newList.splice(idx, 1, editedItem);
-
-      return {
-        ...state,
-        list: newList,
-      };
+      if (state.listFiltered) {
+        const editedItemFiltered = state.listFiltered.find(i => i.id === action.payload.id);
+        editedItemFiltered.task = action.payload.task.trim();
+        editedItemFiltered.price = action.payload.price;
+      }
+      return { ...state };
 
     case DELETE_ITEM:
       return {
         ...state,
         list: state.list.filter(i => i.id !== action.payload),
+        listFiltered: state.listFiltered && state.listFiltered.filter(i => i.id !== action.payload),
+      };
+
+    case SET_SEARCH_VALUE:
+      return {
+        ...state,
+        filter: action.payload,
       };
 
     case FILTER_LIST:
